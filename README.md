@@ -2,7 +2,7 @@
 不定期更新，取材自各个应用，UI中国等
 
 * [UI中国](http://www.ui.cn/detail/284236.html)
-    *  [代码位置](app/src/main/java/com/zzc/somedesigns/login)
+    *  [代码位置](app/src/main/java/com/zzc/somedesigns/loginandperson)
     * 设计效果  
     ![设计效果](gif/login_design.gif)
     * 实现效果  
