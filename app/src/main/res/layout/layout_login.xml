@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_login"
+        android:orientation="vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="21dp"
+            android:text="@string/login_sign"
+            android:textColor="@color/color_000000"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="@string/login_email"
+            />
+
+        <EditText
+            android:id="@+id/edt_login_email"
+            style="@style/login_edt"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="@string/login_psd"
+            />
+
+        <EditText
+            android:id="@+id/edt_login_psd"
+            style="@style/login_edt"
+            android:inputType="textPassword"/>
+
+        <FrameLayout
+            android:id="@+id/v_change"
+            android:layout_width="match_parent"
+            android:layout_height="80dp">
+
+            <TextView
+                android:id="@+id/tv_login_in"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:text="@string/login_sign"
+                android:textColor="@color/color_83b5e8"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:visibility="gone"/>
+        </FrameLayout>
+    </LinearLayout>
+</layout>

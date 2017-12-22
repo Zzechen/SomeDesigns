@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <com.zzc.somedesigns.loginandperson.person.DrawerView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/bg_pay_item"
+        android:elevation="4dp"
+        >
+
+        <TextView
+            android:id="@+id/tv_item_pay_delete"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:background="@drawable/bg_delete"
+            android:gravity="center"
+            android:text="DELETE"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_pay_item"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+
+                <View
+                    android:id="@+id/v_item_status"
+                    android:layout_width="3dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="3dp"
+                    android:layout_marginTop="5dp"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_item_pay_seller"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical"
+                    android:textStyle="bold"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_item_pay_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    />
+            </LinearLayout>
+
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="6dp"
+                android:background="@color/color_000000"
+                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+
+                <TextView
+                    android:id="@+id/tv_item_pay_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="6dp"
+                    android:gravity="center_vertical"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_item_pay_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center_vertical"
+                    />
+            </RelativeLayout>
+        </LinearLayout>
+    </com.zzc.somedesigns.loginandperson.person.DrawerView>
+</layout>

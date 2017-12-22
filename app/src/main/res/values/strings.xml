@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">SomeDesigns</string>
+
+    <string name="activity_login">登录-注册切换</string>
+
+    <string name="login">登录</string>
+    <string name="register">注册</string>
+
+    <string name="change">变换</string>
+    <string name="login_create">CREAT NEW</string>
+    <string name="login_email">EMAIL</string>
+    <string name="login_psd">PASSWORD</string>
+    <string name="login_re_psd">RE-ENTER PASSWORD</string>
+    <string name="login_sign">SIGN IN</string>
+
+    <string name="magic_motion">MAGIC MOTION</string>
+
+
+    <string name="behavior_fab_default">android.support.design.widget.FloatingActionButton$Behavior</string>
+    <string name="magic_find">find</string>
+    <string name="magic_help">help</string>
+    <string name="magic_choose">choose aone album</string>
+
+    <string name="drawer_item">Item-drawer</string>
+    <string name="activity_zhihu_ad">知乎广告</string>
+</resources>
