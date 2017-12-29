@@ -23,6 +23,11 @@
             android:name=".loginandperson.person.PersonActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".zhihuad.ZhihuAdActivity"/>
+        <activity android:name=".demo.DemoActivity"/>
+        <activity android:name=".elema.goodsa.ElemaGoodsAActivity"/>
+        <activity
+            android:name=".elema.goodsb.ElemaGoodsBActivity"
+            android:theme="@style/AppTheme.NoActionBar.Transparent"/>
     </application>
 
 </manifest>

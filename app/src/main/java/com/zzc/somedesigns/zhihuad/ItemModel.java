@@ -12,10 +12,12 @@ class ItemModel {
     @DrawableRes
     private int resId;
     private String desc;
+    private int type;
 
-    public ItemModel(int resId, String desc) {
+    public ItemModel(int resId, String desc,int type) {
         this.resId = resId;
         this.desc = desc;
+        this.type = type;
     }
 
     public int getResId() {
@@ -24,5 +26,9 @@ class ItemModel {
 
     public String getDesc() {
         return desc;
+    }
+
+    public int getType() {
+        return type;
     }
 }

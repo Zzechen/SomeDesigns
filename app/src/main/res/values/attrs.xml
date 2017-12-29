@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <declare-styleable name="ElemaGoodsLayout_Layout">
+        <attr name="sticky" format="enum">
+            <enum name="top" value="1"/>
+            <enum name="bottom" value="2"/>
+        </attr>
+    </declare-styleable>
 </resources>

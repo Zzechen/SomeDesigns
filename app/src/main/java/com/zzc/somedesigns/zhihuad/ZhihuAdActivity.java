@@ -26,12 +26,15 @@ public class ZhihuAdActivity extends AppCompatActivity {
         List<ItemModel> list = new ArrayList<>();
         for (int i = 0; i < 30; i++) {
             int resId = 0;
+            int type = ItemAdapter.TYPE_TEXT;
             if (10 == i) {
                 resId = R.drawable.img_zhihu_ad_1;
+                type = ItemAdapter.TYPE_IMG;
             } else if (13 == i) {
                 resId = R.drawable.img_zhihu_ad_2;
+                type = ItemAdapter.TYPE_IMG_B;
             }
-            list.add(new ItemModel(resId, "item" + i));
+            list.add(new ItemModel(resId, "item" + i, type));
         }
         binding.rvZhifuAd.setLayoutManager(new LinearLayoutManager(this));
         binding.rvZhifuAd.setAdapter(new ItemAdapter(this, list));

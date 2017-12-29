@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--elema b-->
+    <item name="ll_summary" type="id"/>
+    <item name="rl_bar" type="id"/>
+    <item name="iv_elema_share" type="id"/>
+    <item name="rv_elema" type="id"/>
+    <item name="iv_elema_img" type="id"/>
+</resources>

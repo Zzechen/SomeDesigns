@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.zzc.somedesigns.R;
 import com.zzc.somedesigns.databinding.ItemAdDescBinding;
+import com.zzc.somedesigns.databinding.ItemAdImgBBinding;
 import com.zzc.somedesigns.databinding.ItemAdImgBinding;
 
 import java.util.List;
@@ -21,8 +22,9 @@ import java.util.List;
  */
 
 class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.Holder> {
-    private static final int TYPE_TEXT = 0;
-    private static final int TYPE_IMG = 1;
+    static final int TYPE_TEXT = 0;
+    static final int TYPE_IMG = 1;
+    static final int TYPE_IMG_B = 2;
     private List<ItemModel> mList;
     private LayoutInflater mInflater;
 
@@ -33,8 +35,19 @@ class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.Holder> {
 
     @Override
     public Holder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(TYPE_IMG == viewType ? R.layout.item_ad_img : R.layout.item_ad_desc,
-                parent, false);
+        int layoutId = 0;
+        switch (viewType) {
+            case TYPE_IMG:
+                layoutId = R.layout.item_ad_img;
+                break;
+            case TYPE_IMG_B:
+                layoutId = R.layout.item_ad_img_b;
+                break;
+            default:
+                layoutId = R.layout.item_ad_desc;
+                break;
+        }
+        View view = mInflater.inflate(layoutId, parent, false);
         return new Holder(view, viewType);
     }
 
@@ -52,18 +65,21 @@ class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.Holder> {
 
     @Override
     public int getItemViewType(int position) {
-        return 0 != mList.get(position).getResId() ? TYPE_IMG : TYPE_TEXT;
+        return mList != null && !mList.isEmpty() ? mList.get(position).getType() : TYPE_TEXT;
     }
 
     static class Holder extends RecyclerView.ViewHolder {
         private ItemAdImgBinding mImgBinding;
         private ItemAdDescBinding mDescBinding;
+        private ItemAdImgBBinding mImgBBinding;
 
         public Holder(View itemView, int type) {
             super(itemView);
             ViewDataBinding binding = DataBindingUtil.bind(itemView);
             if (TYPE_IMG == type) {
                 mImgBinding = (ItemAdImgBinding) binding;
+            } else if (TYPE_IMG_B == type) {
+                mImgBBinding = (ItemAdImgBBinding) binding;
             } else {
                 mDescBinding = (ItemAdDescBinding) binding;
             }
@@ -78,6 +94,9 @@ class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.Holder> {
         void setBg(int resId) {
             if (mImgBinding != null) {
                 mImgBinding.ivItemAdImg.setImageResource(resId);
+            }
+            if (mImgBBinding != null) {
+                mImgBBinding.ivItemAdImgB.setImageResource(resId);
             }
         }
     }

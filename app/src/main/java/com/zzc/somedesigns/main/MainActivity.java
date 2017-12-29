@@ -9,6 +9,9 @@ import android.support.v7.widget.LinearLayoutManager;
 
 import com.zzc.somedesigns.R;
 import com.zzc.somedesigns.databinding.ActivityMainBinding;
+import com.zzc.somedesigns.demo.DemoActivity;
+import com.zzc.somedesigns.elema.goodsa.ElemaGoodsAActivity;
+import com.zzc.somedesigns.elema.goodsb.ElemaGoodsBActivity;
 import com.zzc.somedesigns.loginandperson.login.LoginActivity;
 import com.zzc.somedesigns.zhihuad.ZhihuAdActivity;
 
@@ -25,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
     private Item[] mItems = {
             new Item(R.string.activity_login, LoginActivity.class),
             new Item(R.string.activity_zhihu_ad, ZhihuAdActivity.class),
+            new Item(R.string.elema_goods_a, ElemaGoodsAActivity.class),
+            new Item(R.string.elema_goods_b, ElemaGoodsBActivity.class),
+            new Item(R.string.demo, DemoActivity.class),
     };
 
     @Override

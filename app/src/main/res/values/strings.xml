@@ -23,4 +23,9 @@
 
     <string name="drawer_item">Item-drawer</string>
     <string name="activity_zhihu_ad">知乎广告</string>
+
+    <string name="elema_goods_a">Eleme-A</string>
+    <string name="elema_goods_b">Eleme-B</string>
+
+    <string name="demo">Demo</string>
 </resources>
