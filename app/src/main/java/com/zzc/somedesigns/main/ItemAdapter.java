@@ -2,13 +2,9 @@ package com.zzc.somedesigns.main;
 
 import android.content.Context;
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.zzc.somedesigns.R;
+import com.zzc.somedesigns.base.BaseRecyclerViewAdapter;
 import com.zzc.somedesigns.databinding.ItemMainBinding;
 
 import java.util.List;
@@ -19,47 +15,22 @@ import java.util.List;
  * @desc ${desc}
  */
 
-class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemHolder> {
-    private List<Item> mItems;
-    private Context mContext;
-    private LayoutInflater mInflater;
+class ItemAdapter extends BaseRecyclerViewAdapter<Item, ItemMainBinding> {
 
-    public ItemAdapter(List<Item> items, Context context) {
-        mItems = items;
-        mContext = context;
-        mInflater = LayoutInflater.from(context);
+    ItemAdapter(Context context, List<Item> datas) {
+        super(context, datas);
     }
 
     @Override
-    public ItemHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View inflate = mInflater.inflate(R.layout.item_main, parent, false);
-        ItemHolder holder = new ItemHolder(inflate);
-        return holder;
+    public void onBindViewHolder(ViewHolder<ItemMainBinding> holder, int position) {
+        final Item item = getDatas().get(position);
+        holder.getBinding().tvItemDesc.setText(item.getTitleId());
+        holder.getBinding().tvItemDesc.setOnClickListener(
+                v -> getContext().startActivity(new Intent(getContext(), item.getClz())));
     }
 
     @Override
-    public void onBindViewHolder(ItemHolder holder, int position) {
-        final Item item = mItems.get(position);
-        holder.binding.tvItemDesc.setText(item.getTitleId());
-        holder.binding.tvItemDesc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mContext.startActivity(new Intent(mContext, item.getClz()));
-            }
-        });
-    }
-
-    @Override
-    public int getItemCount() {
-        return mItems.size();
-    }
-
-    static class ItemHolder extends RecyclerView.ViewHolder {
-        private final ItemMainBinding binding;
-
-        public ItemHolder(View itemView) {
-            super(itemView);
-            binding = DataBindingUtil.bind(itemView);
-        }
+    protected int layoutId() {
+        return R.layout.item_main;
     }
 }

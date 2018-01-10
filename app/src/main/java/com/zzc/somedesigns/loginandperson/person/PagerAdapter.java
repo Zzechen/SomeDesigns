@@ -1,15 +1,11 @@
 package com.zzc.somedesigns.loginandperson.person;
 
 import android.content.Context;
-import android.databinding.DataBindingUtil;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.zzc.somedesigns.R;
+import com.zzc.somedesigns.base.BaseRecyclerViewAdapter;
 import com.zzc.somedesigns.databinding.ItemPersonPagerBinding;
 import com.zzc.somedesigns.utils.SizeUtils;
 
@@ -21,48 +17,28 @@ import java.util.List;
  * @desc ${desc}
  */
 
-public class PagerAdapter extends RecyclerView.Adapter<PagerAdapter.Holder> {
-    private List<PayModel> mList;
-    private LayoutInflater mInflater;
-    private Context mContext;
+class PagerAdapter extends BaseRecyclerViewAdapter<PayModel, ItemPersonPagerBinding> {
 
-    public PagerAdapter(Context context, List<PayModel> list) {
-        mList = list;
-        mInflater = LayoutInflater.from(context);
-        mContext = context;
+    PagerAdapter(Context context, List<PayModel> datas) {
+        super(context, datas);
     }
 
     @Override
-    public Holder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = mInflater.inflate(R.layout.item_person_pager, parent, false);
-        return new Holder(itemView);
-    }
-
-    @Override
-    public void onBindViewHolder(Holder holder, int position) {
-        PayModel model = mList.get(position);
-        holder.binding.tvItemPagerPrice.setText("$" + model.getPrice());
-        holder.binding.tvItemPagerDesc.setText(StatusHelper.desc(model.getStatus()));
+    public void onBindViewHolder(ViewHolder<ItemPersonPagerBinding> holder, int position) {
+        PayModel model = getDatas().get(position);
+        holder.getBinding().tvItemPagerPrice.setText("$" + model.getPrice());
+        holder.getBinding().tvItemPagerDesc.setText(StatusHelper.desc(model.getStatus()));
         int drawableId = StatusHelper.drawable(model.getStatus());
-        Drawable drawable = mContext.getResources().getDrawable(drawableId);
+        Drawable drawable = getContext().getResources().getDrawable(drawableId);
         if (drawable instanceof GradientDrawable) {
-            ((GradientDrawable) drawable).setCornerRadius(SizeUtils.dp2px(mContext, 5));
+            ((GradientDrawable) drawable).setCornerRadius(SizeUtils.dp2px(getContext(), 5));
         }
-        holder.binding.getRoot().setBackgroundDrawable(drawable);
+        holder.getBinding().getRoot().setBackgroundDrawable(drawable);
     }
 
     @Override
-    public int getItemCount() {
-        return mList.size();
-    }
-
-    static class Holder extends RecyclerView.ViewHolder {
-        private final ItemPersonPagerBinding binding;
-
-        public Holder(View itemView) {
-            super(itemView);
-            binding = DataBindingUtil.bind(itemView);
-        }
+    protected int layoutId() {
+        return R.layout.item_person_pager;
     }
 }
 

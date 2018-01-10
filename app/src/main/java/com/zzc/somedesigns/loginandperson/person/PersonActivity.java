@@ -6,10 +6,8 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
-import android.view.View;
 
 import com.zzc.somedesigns.R;
 import com.zzc.somedesigns.databinding.ActivityPersonBinding;
@@ -46,14 +44,9 @@ public class PersonActivity extends AppCompatActivity {
         }
         final LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         binding.include.rvPerson.setLayoutManager(layoutManager);
-        final PayAdapter adapter = new PayAdapter(list, this);
+        final PayAdapter adapter = new PayAdapter(this, list);
         binding.include.rvPerson.setAdapter(adapter);
-        binding.ivPersonClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        binding.ivPersonClose.setOnClickListener(v -> finish());
 
         List<PayModel> pagerList = new ArrayList<>();
 
@@ -69,32 +62,19 @@ public class PersonActivity extends AppCompatActivity {
         binding.rvPersonPager.setAdapter(new PagerAdapter(this, pagerList));
 
 
-        binding.ivPersonClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-        binding.include.srlPerson.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                mHandler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        int index = list.size() + 1;
-                        PayModel model = new PayModel();
-                        model.setSeller("Seller" + index);
-                        model.setTime(new Date().toString());
-                        model.setStatus(index % 3 + 1);
-                        model.setPrice(index * 12.3f);
-                        list.add(0, model);
-                        adapter.notifyItemInserted(0);
-                        binding.include.srlPerson.setRefreshing(false);
-                        layoutManager.scrollToPosition(0);
-                    }
-                }, 200);
-            }
-        });
+        binding.ivPersonClose.setOnClickListener(v -> finish());
+        binding.include.srlPerson.setOnRefreshListener(() -> mHandler.postDelayed(() -> {
+            int index = list.size() + 1;
+            PayModel model = new PayModel();
+            model.setSeller("Seller" + index);
+            model.setTime(new Date().toString());
+            model.setStatus(index % 3 + 1);
+            model.setPrice(index * 12.3f);
+            list.add(0, model);
+            adapter.notifyItemInserted(0);
+            binding.include.srlPerson.setRefreshing(false);
+            layoutManager.scrollToPosition(0);
+        }, 200));
     }
 
     public static void start(Context context, String email, String psd) {

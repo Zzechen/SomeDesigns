@@ -42,27 +42,19 @@ public class WeiboDiscoverActivity extends AppCompatActivity {
         ArrayList<Pair<String, Fragment>> fragments = new ArrayList<>();
         TabLayout tbTitle = mHeaderBinding.tbTitle;
         for (int i = 0; i < titles.length; i++) {
-            fragments.add(new Pair<String, Fragment>(titles[i], WeiboItemsFragment.newInstance(i)));
+            fragments.add(new Pair<>(titles[i], WeiboItemsFragment.newInstance(i)));
         }
         binding.vpWeiboDiscover.setAdapter(new ContentPagerAdapter(getSupportFragmentManager(), fragments));
         tbTitle.setupWithViewPager(binding.vpWeiboDiscover, false);
-        mHeaderBinding.tbl.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-
-            @Override
-            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                boolean isTop = Math.abs(verticalOffset) == appBarLayout.getTotalScrollRange();
-                mHeaderBinding.ivRenew.setVisibility(isTop ? View.VISIBLE : View.INVISIBLE);
-                setDownable(appBarLayout, !isTop);
-            }
+        mHeaderBinding.tbl.addOnOffsetChangedListener((appBarLayout, verticalOffset) -> {
+            boolean isTop = Math.abs(verticalOffset) == appBarLayout.getTotalScrollRange();
+            mHeaderBinding.ivRenew.setVisibility(isTop ? View.VISIBLE : View.INVISIBLE);
+            setDownable(appBarLayout, !isTop);
         });
-        mHeaderBinding.ivRenew.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        v.setVisibility(View.INVISIBLE);
-                        setDownable(mHeaderBinding.tbl, true);
-                        mHeaderBinding.tbl.setExpanded(true);
-                    }
+        mHeaderBinding.ivRenew.setOnClickListener(v -> {
+                    v.setVisibility(View.INVISIBLE);
+                    setDownable(mHeaderBinding.tbl, true);
+                    mHeaderBinding.tbl.setExpanded(true);
                 }
         );
 

@@ -12,35 +12,35 @@ class PayModel {
     private int status;
     private float price;
 
-    public String getSeller() {
+    String getSeller() {
         return seller;
     }
 
-    public void setSeller(String seller) {
+    void setSeller(String seller) {
         this.seller = seller;
     }
 
-    public String getTime() {
+    String getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    void setTime(String time) {
         this.time = time;
     }
 
-    public int getStatus() {
+    int getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    void setStatus(int status) {
         this.status = status;
     }
 
-    public float getPrice() {
+    float getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    void setPrice(float price) {
         this.price = price;
     }
 }

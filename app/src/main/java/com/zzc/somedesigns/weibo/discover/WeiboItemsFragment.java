@@ -4,7 +4,6 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,19 +45,12 @@ public class WeiboItemsFragment extends Fragment {
         binding.rvWeiboItems.setAdapter(mAdapter);
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         binding.rvWeiboItems.setLayoutManager(layoutManager);
-        binding.sfl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                binding.sfl.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        mAdapter.addData(0, "Added" + added++);
-                        layoutManager.scrollToPosition(0);
-                        binding.sfl.setRefreshing(false);
-                    }
-                }, 1000);
-            }
-        });
+        binding.sfl.setOnRefreshListener(() ->
+                binding.sfl.postDelayed(() -> {
+                    mAdapter.addData(0, "Added" + added++);
+                    layoutManager.scrollToPosition(0);
+                    binding.sfl.setRefreshing(false);
+                }, 1000));
     }
 
     public static WeiboItemsFragment newInstance(int page) {

@@ -12,16 +12,16 @@ class Item {
     private int titleId;
     private Class<? extends AppCompatActivity> clz;
 
-    public Item(int titleId, Class<? extends AppCompatActivity> clz) {
+    Item(int titleId, Class<? extends AppCompatActivity> clz) {
         this.titleId = titleId;
         this.clz = clz;
     }
 
-    public int getTitleId() {
+    int getTitleId() {
         return titleId;
     }
 
-    public Class<? extends AppCompatActivity> getClz() {
+    Class<? extends AppCompatActivity> getClz() {
         return clz;
     }
 }

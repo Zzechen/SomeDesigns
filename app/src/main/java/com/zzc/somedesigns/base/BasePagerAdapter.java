@@ -17,8 +17,8 @@ import java.util.List;
  */
 
 public abstract class BasePagerAdapter<T> extends PagerAdapter {
-    protected List<T> mList;
-    protected Context mContext;
+    private List<T> mList;
+    private Context mContext;
     private SparseArray<View> mViewList;
     private int layoutId;
     private PagerItemClickListener<T> mItemClickListener;
@@ -49,12 +49,7 @@ public abstract class BasePagerAdapter<T> extends PagerAdapter {
         final T model = mList.get(position);
         bind(view, model, position);
         if (mItemClickListener != null) {
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mItemClickListener.itemClick(model, position);
-                }
-            });
+            view.setOnClickListener(v -> mItemClickListener.itemClick(model, position));
         }
         return view;
     }
@@ -69,5 +64,5 @@ public abstract class BasePagerAdapter<T> extends PagerAdapter {
         return view == object;
     }
 
-    public abstract void bind(View view, T model, int position);
+    abstract void bind(View view, T model, int position);
 }

@@ -21,10 +21,12 @@ import java.util.List;
 public abstract class BaseRecyclerViewAdapter<Data, Binding extends ViewDataBinding> extends RecyclerView.Adapter<BaseRecyclerViewAdapter.ViewHolder<Binding>> {
     private List<Data> mDatas;
     private LayoutInflater mLayoutInflater;
+    private Context mContext;
 
     public BaseRecyclerViewAdapter(Context context, List<Data> datas) {
-        mDatas = datas != null ? datas : new ArrayList<Data>();
+        mDatas = datas != null ? datas : new ArrayList<>();
         mLayoutInflater = LayoutInflater.from(context);
+        mContext = context;
     }
 
     @Override
@@ -41,8 +43,12 @@ public abstract class BaseRecyclerViewAdapter<Data, Binding extends ViewDataBind
     protected abstract @LayoutRes
     int layoutId();
 
-    public List<Data> getDatas() {
+    protected List<Data> getDatas() {
         return mDatas;
+    }
+
+    protected Context getContext() {
+        return mContext;
     }
 
     public void addData(Data data) {
@@ -94,7 +100,7 @@ public abstract class BaseRecyclerViewAdapter<Data, Binding extends ViewDataBind
     public static class ViewHolder<Binding extends ViewDataBinding> extends RecyclerView.ViewHolder {
         private Binding mBinding;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
         }
 

@@ -4,7 +4,6 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 
 import com.zzc.somedesigns.R;
 import com.zzc.somedesigns.databinding.ActivityLoginBinding;
@@ -20,19 +19,13 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityLoginBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
-        binding.btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                LoginDialog dialog = LoginDialog.newInstance(true);
-                dialog.show(getSupportFragmentManager());
-            }
+        binding.btnLogin.setOnClickListener(v -> {
+            LoginDialog dialog = LoginDialog.newInstance(true);
+            dialog.show(getSupportFragmentManager());
         });
-        binding.btnRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                LoginDialog dialog = LoginDialog.newInstance(false);
-                dialog.show(getSupportFragmentManager());
-            }
+        binding.btnRegister.setOnClickListener(v -> {
+            LoginDialog dialog = LoginDialog.newInstance(false);
+            dialog.show(getSupportFragmentManager());
         });
     }
 }

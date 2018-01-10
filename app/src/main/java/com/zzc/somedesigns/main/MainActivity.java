@@ -42,6 +42,6 @@ public class MainActivity extends AppCompatActivity {
         DividerItemDecoration decor = new DividerItemDecoration(this, LinearLayoutManager.VERTICAL);
         decor.setDrawable(getResources().getDrawable(R.drawable.divider_horizontal));
         binding.rvMain.addItemDecoration(decor);
-        binding.rvMain.setAdapter(new ItemAdapter(items, this));
+        binding.rvMain.setAdapter(new ItemAdapter(this, items));
     }
 }

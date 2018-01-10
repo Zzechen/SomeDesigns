@@ -39,25 +39,17 @@ public class ElemaGoodsBActivity extends AppCompatActivity {
         binding.rvElema.setLayoutManager(new GridLayoutManager(this, 2));
         binding.ivElemaShare.setOnClickListener(toast);
         binding.ivElemaBarShare.setOnClickListener(toast);
-        binding.ivElemaClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        binding.ivElemaClose.setOnClickListener(v -> finish());
 
     }
 
     private Toast mToast;
-    private View.OnClickListener toast = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            if (mToast != null) {
-                mToast.cancel();
-            } else {
-                mToast = Toast.makeText(ElemaGoodsBActivity.this, "share", Toast.LENGTH_SHORT);
-            }
-            mToast.show();
+    private View.OnClickListener toast = v -> {
+        if (mToast != null) {
+            mToast.cancel();
+        } else {
+            mToast = Toast.makeText(ElemaGoodsBActivity.this, "share", Toast.LENGTH_SHORT);
         }
+        mToast.show();
     };
 }

@@ -17,9 +17,9 @@ import java.util.List;
 class ContentPagerAdapter extends FragmentPagerAdapter {
     private List<Pair<String, Fragment>> mFragments;
 
-     ContentPagerAdapter(FragmentManager fm, List<Pair<String, Fragment>> fragments) {
+    ContentPagerAdapter(FragmentManager fm, List<Pair<String, Fragment>> fragments) {
         super(fm);
-        mFragments = fragments != null ? fragments : new ArrayList<Pair<String, Fragment>>();
+        mFragments = fragments != null ? fragments : new ArrayList<>();
     }
 
     @Override

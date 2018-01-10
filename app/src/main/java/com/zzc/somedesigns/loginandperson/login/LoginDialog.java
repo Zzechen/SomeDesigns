@@ -92,14 +92,11 @@ public class LoginDialog extends DialogFragment {
         mBelowBinding.vLogin.vChange.setOnClickListener(changeListener);
         mAboveBinding.vLogin.edtLoginEmail.addTextChangedListener(mTextWatcher);
         mAboveBinding.vLogin.edtLoginPsd.addTextChangedListener(mTextWatcher);
-        mAboveBinding.vLogin.tvLoginIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String email = mAboveBinding.vLogin.edtLoginEmail.getText().toString();
-                String psd = mAboveBinding.vLogin.edtLoginPsd.getText().toString();
-                PersonActivity.start(getActivity(), email, psd);
-                dismiss();
-            }
+        mAboveBinding.vLogin.tvLoginIn.setOnClickListener(v -> {
+            String email = mAboveBinding.vLogin.edtLoginEmail.getText().toString();
+            String psd = mAboveBinding.vLogin.edtLoginPsd.getText().toString();
+            PersonActivity.start(getActivity(), email, psd);
+            dismiss();
         });
         return dialog;
     }

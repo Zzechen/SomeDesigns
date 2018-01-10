@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.zzc.somedesigns.R;
+import com.zzc.somedesigns.base.BaseRecyclerViewAdapter;
 import com.zzc.somedesigns.databinding.ItemElemaBinding;
 
 import java.util.List;
@@ -18,41 +19,22 @@ import java.util.List;
  * @desc ${desc}
  */
 
-public class ElemaAdapter extends RecyclerView.Adapter<ElemaAdapter.Holder> {
-    private List<ElemaGoods> mList;
-    private LayoutInflater mInflater;
+public class ElemaAdapter extends BaseRecyclerViewAdapter<ElemaGoods, ItemElemaBinding> {
 
-    public ElemaAdapter(Context context, List<ElemaGoods> list) {
-        mList = list;
-        mInflater = LayoutInflater.from(context);
+    public ElemaAdapter(Context context, List<ElemaGoods> datas) {
+        super(context, datas);
     }
 
     @Override
-    public Holder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.item_elema, parent, false);
-        return new Holder(view);
+    public void onBindViewHolder(ViewHolder<ItemElemaBinding> holder, int position) {
+        ElemaGoods goods = getDatas().get(position);
+        holder.getBinding().tvItemElemaPrice.setText(String.format("￥%.2f", goods.getPrice()));
+        holder.getBinding().ivItemElemaImg.setImageResource(goods.getResId());
+        holder.getBinding().tvItemElemaTitle.setText(goods.getTitle());
     }
 
     @Override
-    public void onBindViewHolder(Holder holder, int position) {
-        ElemaGoods goods = mList.get(position);
-        holder.binding.tvItemElemaPrice.setText(String.format("￥%.2f", goods.getPrice()));
-        holder.binding.ivItemElemaImg.setImageResource(goods.getResId());
-        holder.binding.tvItemElemaTitle.setText(goods.getTitle());
-    }
-
-    @Override
-    public int getItemCount() {
-        return mList.size();
-    }
-
-    static class Holder extends RecyclerView.ViewHolder {
-
-        private ItemElemaBinding binding;
-
-        public Holder(View itemView) {
-            super(itemView);
-            binding = DataBindingUtil.bind(itemView);
-        }
+    protected int layoutId() {
+        return R.layout.item_elema;
     }
 }
