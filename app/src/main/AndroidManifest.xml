@@ -24,10 +24,15 @@
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".zhihuad.ZhihuAdActivity"/>
         <activity android:name=".demo.DemoActivity"/>
-        <activity android:name=".elema.goodsa.ElemaGoodsAActivity"/>
+        <activity
+            android:name=".elema.goodsa.ElemaGoodsAActivity"
+            android:theme="@style/AppTheme.NoActionBar.Transparent"/>
         <activity
             android:name=".elema.goodsb.ElemaGoodsBActivity"
             android:theme="@style/AppTheme.NoActionBar.Transparent"/>
+        <activity
+            android:name=".weibo.discover.WeiboDiscoverActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

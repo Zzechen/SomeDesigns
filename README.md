@@ -19,3 +19,10 @@
     ![实际效果]()
     * 实现效果  
     ![实现效果](gif/elema_b.gif)
+    
+* 微博发现界面
+    * [代码位置](app/src/main/java/com/zzc/somedesigns/weibo/discover)
+    * 实现效果
+    ![实现效果](gif/weibo_impl.gif)
+    * 原有效果
+    ![原有效果](gif/weibo_orign.gif)
